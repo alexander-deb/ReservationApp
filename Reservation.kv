@@ -1,0 +1,76 @@
+BoxLayout:
+    orientation: 'vertical'
+
+    MDToolbar:
+        title: "Забронировать аудиторию"
+
+
+    MDBottomNavigation:
+        #color stuff
+        #panel_color: 0,0,1,1
+
+        MDBottomNavigationItem:
+            name: 'screen 1'
+            text: "Search"
+            icon: 'magnify'
+
+            MDBoxLayout:
+                id: main_box
+                orientation: 'vertical'
+                MDBoxLayout:
+
+                    MDTextField:
+                        id: size
+                        required: True
+                        hint_text: "Количество человек"
+                        pos_hint: {'center_x': .9, 'center_y': .9}
+
+                    MDRaisedButton:
+                        id: picker1
+                        text: "Начальное время"
+                        pos_hint: {'center_x': .9, 'center_y': .9}
+                        on_release: app.show_time_picker1()
+                    MDRaisedButton:
+                        id: picker2
+                        text: "Конечное время"
+                        pos_hint: {'center_x': .9, 'center_y': .9}
+                        on_release: app.show_time_picker2()
+
+                    MDIconButton:
+                        icon: "calendar"
+                        pos_hint: {'center_x': .9, 'center_y': .9}
+                        on_release: app.show_date_picker()
+                    MDIconButton:
+                        id: search
+                        icon: "magnify"
+                        pos_hint: {'center_x': .9, 'center_y': .9}
+                        on_release: app.search_rooms()
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    id: box
+
+
+        MDBottomNavigationItem:
+            name: 'screen 2'
+            text: "Create"
+            icon: 'pencil'
+            MDBoxLayout:
+                size_hint: .6, .6
+                orientation: 'vertical'
+                MDTextField:
+                    id: name_of_aud
+                    required: True
+                    hint_text: "Название аудитории"
+                    pos_hint: {'center_x': .9, 'center_y': .9}
+                MDTextField:
+                    id: size_of_aud
+                    required: True
+                    hint_text: "Вместимость"
+                    pos_hint: {'center_x': .9, 'center_y': .9}
+
+                MDRaisedButton:
+                    id: create
+                    text: "СОЗДАТЬ"
+
+                    on_release: app.create_room()
+
